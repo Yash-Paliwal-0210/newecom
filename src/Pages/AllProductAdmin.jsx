@@ -14,6 +14,7 @@ const AllProductAdmin = () => {
     Category: "",
     Description: "",
   }); // State to hold form data for updating
+  const [showForm, setShowForm] = useState(false); // State to control form visibility
 
   const product = useSelector((state) => state.product.product);
   const dispatch = useDispatch();
@@ -48,6 +49,7 @@ const AllProductAdmin = () => {
       Category: product.Category,
       Description: product.Description,
     });
+    setShowForm(true); // Show the form when editing starts
   };
 
   const cancelEditing = () => {
@@ -60,6 +62,7 @@ const AllProductAdmin = () => {
       Category: "",
       Description: "",
     });
+    setShowForm(false); // Hide the form when editing is cancelled
   };
 
   const handleUpdateChange = (e) => {
@@ -90,142 +93,131 @@ const AllProductAdmin = () => {
   };
 
   return (
-    <div style={{ maxWidth: "1000px", margin: "auto" }}>
-      <h2 style={{ textAlign: "center" }}>Product Table</h2>
-      <table style={{ width: "100%", borderCollapse: "collapse" }}>
-        <thead>
-          <tr>
-            <th style={tableHeaderStyle}>ID</th>
-            <th style={tableHeaderStyle}>Name</th>
-            <th style={tableHeaderStyle}>Price</th>
-            <th style={tableHeaderStyle}>Stock</th>
-            <th style={tableHeaderStyle}>Update</th>
-            <th style={tableHeaderStyle}>Delete</th>
-          </tr>
-        </thead>
-        <tbody>
-          {product.map((prod) => (
-            <tr key={prod.Id} style={tableRowStyle}>
-              <td style={tableCellStyle}>{prod.Id}</td>
-              <td style={tableCellStyle}>{prod.Name.substring(0, 30)}</td>
-              <td style={tableCellStyle}>{prod.Price}</td>
-              <td style={tableCellStyle}>{prod.Stock}</td>
-              <td style={tableCellStyle}>
-                <button
-                  onClick={() => startEditing(prod)}
-                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
-                >
-                  Update
-                </button>
-              </td>
-              <td style={tableCellStyle}>
-                <button
-                  onClick={() => delete_product(prod.Id)}
-                  className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-                >
-                  Delete
-                </button>
-              </td>
+    <div className="max-w-screen-lg mx-auto">
+      <h2 className="text-center text-2xl font-bold mb-4">Product Table</h2>
+      <div className="overflow-x-auto">
+        <table className="w-full border-collapse border-gray-300">
+          <thead>
+            <tr className="bg-gray-200">
+              <th className="p-3 text-left">ID</th>
+              <th className="p-3 text-left">Name</th>
+              <th className="p-3 text-left">Price</th>
+              <th className="p-3 text-left">Stock</th>
+              <th className="p-3 text-left">Update</th>
+              <th className="p-3 text-left">Delete</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            {product.map((prod) => (
+              <tr key={prod.Id} className="border-b border-gray-300">
+                <td className="p-3">{prod.Id}</td>
+                <td className="p-3">{prod.Name.substring(0, 30)}</td>
+                <td className="p-3">{prod.Price}</td>
+                <td className="p-3">{prod.Stock}</td>
+                <td className="p-3">
+                  <button
+                    onClick={() => startEditing(prod)}
+                    className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                  >
+                    Update
+                  </button>
+                </td>
+                <td className="p-3">
+                  <button
+                    onClick={() => delete_product(prod.Id)}
+                    className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                  >
+                    Delete
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
 
       {/* Update Form */}
-      {editingProduct && (
-        <div style={{ marginTop: "20px" }}>
-          <h3>Edit Product</h3>
-          <form onSubmit={submitUpdate}>
-            <label>
-              Name:
-              <input
-                type="text"
-                name="Name"
-                value={updateFormData.Name}
-                onChange={handleUpdateChange}
-                required
-              />
-            </label>
-            <br />
-            <label>
-              Price:
-              <input
-                type="number"
-                name="Price"
-                value={updateFormData.Price}
-                onChange={handleUpdateChange}
-                required
-              />
-            </label>
-            <br />
-            <label>
-              Stock:
-              <input
-                type="number"
-                name="Stock"
-                value={updateFormData.Stock}
-                onChange={handleUpdateChange}
-                required
-              />
-            </label>
-            <br />
-            <label>
-              Category:
-              <input
-                type="text"
-                name="Category"
-                value={updateFormData.Category}
-                onChange={handleUpdateChange}
-                required
-              />
-            </label>
-            <br />
-            <label>
-              Description:
-              <input
-                type="text"
-                name="Category"
-                value={updateFormData.Description}
-                onChange={handleUpdateChange}
-                required
-              />
-            </label>
-            <br />
-            <button
-              type="submit"
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-            >
-              Save Update
-            </button>
-            <button
-              type="button"
-              onClick={cancelEditing}
-              className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded ml-2"
-            >
-              Cancel
-            </button>
-          </form>
+      {editingProduct && showForm && (
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 flex items-center justify-center">
+          <div className="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
+            <h3 className="text-lg font-bold mb-4">Edit Product</h3>
+            <form onSubmit={submitUpdate}>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">Name:</label>
+                <input
+                  type="text"
+                  name="Name"
+                  value={updateFormData.Name}
+                  onChange={handleUpdateChange}
+                  required
+                  className="block w-full border-gray-300 rounded-md p-2 mt-1"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">Price:</label>
+                <input
+                  type="number"
+                  name="Price"
+                  value={updateFormData.Price}
+                  onChange={handleUpdateChange}
+                  required
+                  className="block w-full border-gray-300 rounded-md p-2 mt-1"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">Stock:</label>
+                <input
+                  type="number"
+                  name="Stock"
+                  value={updateFormData.Stock}
+                  onChange={handleUpdateChange}
+                  required
+                  className="block w-full border-gray-300 rounded-md p-2 mt-1"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">Category:</label>
+                <input
+                  type="text"
+                  name="Category"
+                  value={updateFormData.Category}
+                  onChange={handleUpdateChange}
+                  required
+                  className="block w-full border-gray-300 rounded-md p-2 mt-1"
+                />
+              </div>
+              <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700">Description:</label>
+                <input
+                  type="text"
+                  name="Description"
+                  value={updateFormData.Description}
+                  onChange={handleUpdateChange}
+                  required
+                  className="block w-full border-gray-300 rounded-md p-2 mt-1"
+                />
+              </div>
+              <div className="flex justify-end">
+                <button
+                  type="submit"
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mr-2"
+                >
+                  Save Update
+                </button>
+                <button
+                  type="button"
+                  onClick={cancelEditing}
+                  className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       )}
     </div>
   );
-};
-
-const tableHeaderStyle = {
-  backgroundColor: "#f2f2f2",
-  padding: "12px",
-  textAlign: "left",
-  borderBottom: "1px solid #ddd",
-};
-
-const tableRowStyle = {
-  backgroundColor: "white",
-  borderBottom: "1px solid #ddd",
-};
-
-const tableCellStyle = {
-  padding: "12px",
-  textAlign: "left",
 };
 
 export default AllProductAdmin;

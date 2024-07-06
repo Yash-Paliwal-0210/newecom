@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { db } from '../Firebase/Config';
 import ReactStars from 'react-stars';
 import { useNavigate, useSearchParams } from 'react-router-dom';
+import { toast, ToastContainer } from 'react-toastify';
 
 const Products = () => {
     const [selectedCategory, setSelectedCategory] = useState("all");
@@ -178,9 +179,7 @@ const Products = () => {
                                         <option value="Nayra">Nayra Set</option>
                                         <option value="Pant">Pant</option>
                                         <option value="Dupatta">Dupatta</option>
-                                        {/* <option value="BabyToys">Baby's & Toys</option> */}
-                                        {/* <option value="Grocery">Groceries and Pets</option>
-            <option value="Health">Health & Beauty</option> */}
+                                      
                                     </select>
                                 </div>
                                 <div className="flex items-center">
@@ -202,7 +201,7 @@ const Products = () => {
                                     <label for="filter-search" className="mr-2 text-sm font-medium">Search:</label>
 
                                     <input type="text" id="filter-search" onChange={handleSearchChange} value={searchTerm} className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500" />
-                                    {/* <input onChange={(e)=>setlink(e.target.value)} value={link} type="text" id="simple-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5" placeholder="What are you looking for?" required /> */}
+                                    
 
                                     <button type="submit" onClick={() => link && navigateTo(`/product?q=${link}`)} className="p-2.5 ms-2 mr-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
                                         <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
@@ -219,6 +218,7 @@ const Products = () => {
                                 ))}
                             </div>
                         </div>
+                        <ToastContainer/>
                     </div>
                 )
             }
@@ -226,18 +226,27 @@ const Products = () => {
     );
 };
 
+
 const Product = ({ doc }) => {
     const handleAddToCart = (product) => {
         const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
 
-        const existingItem = cartItems.find((item) => item.id === product.id);
+        const existingItem = cartItems.find((item) => item.Id === product.Id);
         if (existingItem) {
             existingItem.quantity = existingItem.quantity + 1;
         } else {
             cartItems.push({ ...product, quantity: 1 });
         }
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
-        alert(`${product.Name} Added Successfully`);
+        toast.success(`${product.Name} Added Successfully`, {
+            position: "top-right",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
     };
     return (
         <div id={doc} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700" style={{ width: "280px" }}>
@@ -259,6 +268,7 @@ const Product = ({ doc }) => {
                     <button onClick={() => handleAddToCart(doc)}><a href="#" className="text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-red-500 dark:hover:bg-red-500 dark:focus:ring-red-600">Add to cart</a></button>
                 </div>
             </div>
+            <ToastContainer/>
         </div>
     );
 };

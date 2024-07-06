@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { db } from '../Firebase/Config';
 import { doc, setDoc } from 'firebase/firestore';
 import { v4 as uuidv4 } from 'uuid';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 function AddProductForm() {
   const [name, setName] = useState('');
@@ -12,6 +13,19 @@ function AddProductForm() {
   const [category, setcategory] = useState('');
   const [stock, setStock] = useState(0);
   const [imageUrl, setImageUrl] = useState('link');
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const auth = getAuth();
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(null);
+      }
+    });
+    return () => unsubscribe();
+  }, []);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -21,13 +35,19 @@ function AddProductForm() {
       alert('Please fill in all fields');
       return;
     }
+
+    if (!user) {
+      alert('User is not authenticated');
+      return;
+    }
+
     const generatedProductId = uuidv4();
 
     const docData = {
       Name: name,
       Price: price,
       Description: description,
-      CreatedAt: new Date(user.joinedAt.seconds * 1000).toLocaleString(),
+      CreatedAt: new Date(user.metadata.creationTime).toLocaleString(),
       Rating: 5.0,
       Reviews: [],
       Category: category,
@@ -81,25 +101,22 @@ function AddProductForm() {
           />
         </div>
         <div className="flex flex-col">
-          <label htmlFor="description" className="text-sm font-medium">Category:</label>
-          <select id="filter-category" className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500" value={category} onChange={(e) => setcategory(e.target.value)}>
+          <label htmlFor="category" className="text-sm font-medium">Category:</label>
+          <select id="category" className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500" value={category} onChange={(e) => setcategory(e.target.value)}>
             <option value="all">All</option>
             <option value="Ethinic">Ethinic Set</option>
-            {/* <option value="clothing">Clothing</option> */}
             <option value="Tops">Tops</option>
             <option value="Kurti">Kurti Set</option>
             <option value="Ambrella">Ambrella Set</option>
             <option value="Nayra">Nayra Set</option>
             <option value="Pant">Pant</option>
             <option value="Dupatta">Dupatta</option>
-            {/* <option value="BabyToys">Baby's & Toys</option> */}
-            {/* <option value="Grocery">Groceries and Pets</option>
-            <option value="Health">Health & Beauty</option> */}
           </select>
         </div>
         <div className="flex flex-col">
-          <label htmlFor="description" className="text-sm font-medium">Stock:</label>
+          <label htmlFor="stock" className="text-sm font-medium">Stock:</label>
           <input
+            type="number"
             id="stock"
             value={stock}
             onChange={(e) => setStock(e.target.value)}
@@ -107,17 +124,6 @@ function AddProductForm() {
             className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
           />
         </div>
-        {/* <div className="flex flex-col"> */}
-        {/* <label htmlFor="imageUrl" className="text-sm font-medium">Image URL:</label>
-        <input
-        type="url"
-        id="imageUrl"
-        value={imageUrl}
-        onChange={(e) => setImageUrl(e.target.value)}
-        required
-        className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
-      /> */}
-        {/* </div> */}
         <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700">
           Add Product
         </button>

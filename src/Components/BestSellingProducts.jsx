@@ -2,6 +2,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import React, { useState, useEffect } from 'react';
 import ReactStars from 'react-stars';
 import { db } from '../Firebase/Config';
+import { toast } from 'react-toastify';
 
 export default function BestSellingProducts() {
     const [products, setProducts] = useState([]);
@@ -11,15 +12,23 @@ export default function BestSellingProducts() {
 
     const handleAddToCart = (product) => {
         const cartItems = JSON.parse(localStorage.getItem("cartItems")) || [];
-
-        const existingItem = cartItems.find((item) => item.id === product.id);
+    
+        const existingItem = cartItems.find((item) => item.Id === product.Id);
         if (existingItem) {
             existingItem.quantity = existingItem.quantity + 1;
         } else {
             cartItems.push({ ...product, quantity: 1 });
         }
         localStorage.setItem("cartItems", JSON.stringify(cartItems));
-        alert(`${product.Name} Added Successfully`);
+        toast.success(`${product.Name} Added Successfully`, {
+            position: "top-right",
+            autoClose: 3000, // Close the toast after 3 seconds
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+        });
     };
 
     const getProduct = async () => {
@@ -104,7 +113,7 @@ export default function BestSellingProducts() {
             </div>
 
             <div className='py-4 flex justify-center mb-10'>
-                <a href="http://localhost:5174/Product"><button className='px-14 py-4 text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-center dark:bg-red-500 dark:hover:bg-red-500 dark:focus:ring-red-600' >View All</button></a>
+                <a href="/Product"><button className='px-14 py-4 text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-center dark:bg-red-500 dark:hover:bg-red-500 dark:focus:ring-red-600' >View All</button></a>
             </div>
 
         </div>
