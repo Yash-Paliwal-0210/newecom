@@ -10,7 +10,7 @@ function AddProductForm() {
   const [name, setName] = useState('');
   const [price, setPrice] = useState(0);
   const [description, setDescription] = useState('');
-  const [category, setcategory] = useState('');
+  const [category, setCategory] = useState('');
   const [stock, setStock] = useState(0);
   const [imageUrl, setImageUrl] = useState('link');
   const [user, setUser] = useState(null);
@@ -58,16 +58,22 @@ function AddProductForm() {
     try {
       await setDoc(doc(db, "Products", generatedProductId.slice(0, 16)), docData);
       toast.success("Operation successful!");
+      // Reset the form fields after successful submission
+      setName('');
+      setPrice(0);
+      setDescription('');
+      setCategory('');
+      setStock(0);
     } catch (error) {
       toast.error("An error occurred. Please try again.");
     }
   };
 
   return (
-    <div>
+    <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <ToastContainer position="top-right" autoClose={5000} />
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
-        <h2 className="text-xl font-bold">Add New Product</h2>
+      <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg space-y-6">
+        <h2 className="text-2xl font-bold text-center">Add New Product</h2>
         <div className="flex flex-col">
           <label htmlFor="name" className="text-sm font-medium">Name:</label>
           <input
@@ -76,7 +82,7 @@ function AddProductForm() {
             value={name}
             onChange={(e) => setName(e.target.value)}
             required
-            className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
         <div className="flex flex-col">
@@ -87,7 +93,7 @@ function AddProductForm() {
             value={price}
             onChange={(e) => setPrice(e.target.value)}
             required
-            className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
         <div className="flex flex-col">
@@ -97,12 +103,17 @@ function AddProductForm() {
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             required
-            className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500 h-24"
+            className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 h-24 resize-none"
           />
         </div>
         <div className="flex flex-col">
           <label htmlFor="category" className="text-sm font-medium">Category:</label>
-          <select id="category" className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500" value={category} onChange={(e) => setcategory(e.target.value)}>
+          <select
+            id="category"
+            className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
+            value={category}
+            onChange={(e) => setCategory(e.target.value)}
+          >
             <option value="all">All</option>
             <option value="Ethinic">Ethinic Set</option>
             <option value="Tops">Tops</option>
@@ -121,10 +132,10 @@ function AddProductForm() {
             value={stock}
             onChange={(e) => setStock(e.target.value)}
             required
-            className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-1 focus:ring-blue-500"
+            className="px-3 py-2 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500"
           />
         </div>
-        <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700">
+        <button type="submit" className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-700 transition duration-200">
           Add Product
         </button>
       </form>

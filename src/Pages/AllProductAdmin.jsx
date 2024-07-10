@@ -3,6 +3,8 @@ import { FetchAllProduct } from "../Redux/Products/ProductReducer";
 import { useDispatch, useSelector } from "react-redux";
 import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../Firebase/Config";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const AllProductAdmin = () => {
   const [editingProduct, setEditingProduct] = useState(null); // State to hold product being edited
@@ -31,9 +33,10 @@ const AllProductAdmin = () => {
     const docRef = doc(db, "Products", productId);
     try {
       await deleteDoc(docRef);
-      console.log("Product deleted successfully");
+      toast.success("Product deleted successfully");
       fetch_product(); // Refresh product list after deletion
     } catch (error) {
+      toast.error("Error deleting product: " + error.message);
       console.error("Error deleting product:", error);
     }
   };
@@ -63,6 +66,7 @@ const AllProductAdmin = () => {
       Description: "",
     });
     setShowForm(false); // Hide the form when editing is cancelled
+    // toast.info("Editing cancelled");
   };
 
   const handleUpdateChange = (e) => {
@@ -84,13 +88,16 @@ const AllProductAdmin = () => {
         Category: Category,
         Description: Description,
       });
-      console.log("Product updated successfully");
+      toast.success("Product updated successfully");
       cancelEditing();
       fetch_product(); // Refresh product list after update
     } catch (error) {
+      toast.error("Error updating product: " + error.message);
       console.error("Error updating product:", error);
     }
   };
+
+  const categories = ["all", "Ethinic", "Kurti", "Ambrella", "Nayra","Pant", "Dupatta"]; // List of categories
 
   return (
     <div className="max-w-screen-lg mx-auto">
@@ -103,6 +110,7 @@ const AllProductAdmin = () => {
               <th className="p-3 text-left">Name</th>
               <th className="p-3 text-left">Price</th>
               <th className="p-3 text-left">Stock</th>
+              <th className="p-3 text-left">Category</th>
               <th className="p-3 text-left">Update</th>
               <th className="p-3 text-left">Delete</th>
             </tr>
@@ -114,6 +122,8 @@ const AllProductAdmin = () => {
                 <td className="p-3">{prod.Name.substring(0, 30)}</td>
                 <td className="p-3">{prod.Price}</td>
                 <td className="p-3">{prod.Stock}</td>
+                <td className="p-3">{prod.Category}</td>
+
                 <td className="p-3">
                   <button
                     onClick={() => startEditing(prod)}
@@ -177,14 +187,19 @@ const AllProductAdmin = () => {
               </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">Category:</label>
-                <input
-                  type="text"
+                <select
                   name="Category"
                   value={updateFormData.Category}
                   onChange={handleUpdateChange}
                   required
                   className="block w-full border-gray-300 rounded-md p-2 mt-1"
-                />
+                >
+                  {categories.map((category) => (
+                    <option key={category} value={category}>
+                      {category}
+                    </option>
+                  ))}
+                </select>
               </div>
               <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700">Description:</label>
@@ -216,6 +231,7 @@ const AllProductAdmin = () => {
           </div>
         </div>
       )}
+      <ToastContainer />
     </div>
   );
 };
