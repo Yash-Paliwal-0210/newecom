@@ -181,11 +181,11 @@ const Navbar = () => {
                 <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                   <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
                 </svg>
-                <span className="sr-only">Search</span>
+              <span className="sr-only">Search</span>
               </button>
             </form>
             <div className="hidden lg:flex items-center space-x-3">
-              <a href="#"><img src={heart} alt="Liked" style={{ height: "30px", width: "30px", padding: "2px" }} /></a>
+              {/* <a href="#"><img src={heart} alt="Liked" style={{ height: "30px", width: "30px", padding: "2px" }} /></a> */}
               <a href="/cart"><img src={cart} alt="Cart" style={{ height: "30px", width: "30px", padding: "2px" }} /></a>
               {!isLoggedIn && (
                 <>
@@ -207,6 +207,8 @@ const Navbar = () => {
                   {dropdownOpen && (
                     <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg py-2 z-10">
                       <a href="#" onClick={() => navigateTo('/profile')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
+                      <a href="/order/me" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</a>
+                    {/* <a href="/liked" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Liked</a> */}
                       {role === "admin" && (
                         <a href="#" onClick={() => navigateTo('/admin/dashboard')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Dashboard</a>
                       )}
@@ -232,11 +234,13 @@ const Navbar = () => {
                 {dropdownOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg py-2 z-10">
                     <a href="#" onClick={() => navigateTo('/profile')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
-                    <a href="/cart" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</a>
-                    <a href="/liked" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Liked</a>
+                    <a href="/order/mee" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</a>
+
+                    {/* <a href="/liked" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Liked</a>  */}
                     {role === "admin" && (
                       <a href="#" onClick={() => navigateTo('/admin/dashboard')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Dashboard</a>
                     )}
+                    <a href="#" onClick={() => navigateTo('/cart')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</a>
                     <a href="#" onClick={handleLogout} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>
                   </div>
                 )}
