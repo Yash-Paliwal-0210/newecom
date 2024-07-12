@@ -95,7 +95,7 @@ const DashboardAdmin = () => {
           <WidgetItem percent={30} value={totalProducts()} heading="Products" color="rgb(76,0,255)" />
         </section>
 
-        <section className="graph-container mt-8 h-[200px] w-[500px] flex flex-col lg:flex-row gap-10 ">
+        <section className="graph-container mt-8 h-[200px] w-[500px] flex flex-col xl:flex-row gap-10 ">
           <div className="revenue-chart mb-8">
             <h2 className="text-center font-semibold text-2xl">Revenue & Transaction</h2>
             <BarCharts
