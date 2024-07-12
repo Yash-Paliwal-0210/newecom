@@ -26,6 +26,7 @@ import UsersAdmin from "./Pages/UsersAdmin";
 import ReviewAdmin from "./Pages/ReviewAdmin";
 import Payment from "./Pages/Payment";
 import AllProductAdmin from "./Pages/AllProductAdmin";
+import OrderSummary from "./Pages/OrderSummary";
 
 function App() {
   const dispatch = useDispatch();
@@ -73,6 +74,7 @@ function App() {
             <Route path='/admin/users' element={<UsersAdmin />} />
             <Route path='/admin/review' element={<ReviewAdmin />} />
             <Route path='/payment' element={<Payment />} />
+            <Route path='/ordersummary' element={<OrderSummary />} />
           </Route>
         </Routes>
       </Router>

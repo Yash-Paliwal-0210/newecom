@@ -189,7 +189,7 @@ const Navbar = () => {
               <a href="/cart"><img src={cart} alt="Cart" style={{ height: "30px", width: "30px", padding: "2px" }} /></a>
               {!isLoggedIn && (
                 <>
-                  <a href="/auth/Login" className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Login</a>
+                  <a href="#" onClick={() => navigateTo('/auth/Login')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Login</a>
                   <a href="#" onClick={() => navigateTo('/auth/SignUp')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Sign Up</a>
                 </>
               )}

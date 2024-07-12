@@ -50,15 +50,15 @@ const OrdersAdmin = () => {
 
         <div className="flex sm:flex-row flex-col">
 
-      <div className={`flex flex-col p-8 gap-4 w-full md:w-1/4 ${menuOpen ? "block" : "hidden"} md:block`}>
-        <NavItem icon="fa-qrcode" text="Dashboard" link="" />
+        <div className={`flex  flex-col p-8 gap-4  ${menuOpen ? "block" : "hidden"} md:block`}>
+        <NavItem icon="fa-qrcode" text="Dashboard" link="/admin/dashboard" />
         <NavItem icon="fa-cart-shopping" text="Products" link="" subLinks={[
           { text: "All", link: "/admin/product" },
           { text: "New", link: "/admin/product/new" }
         ]} />
         <NavItem icon="fa-cart-shopping" text="Orders" link="/admin/orders" />
         <NavItem icon="fa-users" text="Users" link="/admin/users" />
-        <NavItem icon="fa-star" text="Review" link="/admin/review" />
+        {/* <NavItem icon="fa-star" text="Review" link="/admin/review" /> */}
       </div>
         </div>
 
@@ -121,11 +121,11 @@ const OrdersAdmin = () => {
 export default OrdersAdmin;
 
 const NavItem = ({ icon, text, link, subLinks = [] }) => (
-  <div className="flex gap-2 items-center px-4">
+  <div className="flex gap-4 items-center px-4 mb-4">
     <div className="w-[20px]">
       <i className={`fa-solid ${icon}`}></i>
     </div>
-    <div className="space-x-2 font-semibold">
+    <div className="space-x-2 font-semibold mb-2">
       <a href={link}>
         <span className="text-2xl">{text}</span>
       </a>

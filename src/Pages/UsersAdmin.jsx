@@ -53,7 +53,7 @@ const UsersAdmin = () => {
         ]} />
         <NavItem icon="fa-cart-shopping" text="Orders" link="/admin/orders" />
         <NavItem icon="fa-users" text="Users" link="/admin/users" />
-        <NavItem icon="fa-star" text="Review" link="/admin/review" />
+        {/* <NavItem icon="fa-star" text="Review" link="/admin/review" /> */}
       </div>
               <div>
 
@@ -105,20 +105,20 @@ const UsersAdmin = () => {
 export default UsersAdmin
 
 const NavItem = ({ icon, text, link, subLinks = [] }) => (
-    <div className="flex gap-2 items-center px-4">
-      <div className="w-[20px]">
-        <i className={`fa-solid ${icon}`}></i>
-      </div>
-      <div className="space-x-2 font-semibold">
-        <a href={link}>
-          <span className="text-2xl">{text}</span>
-        </a>
-        {subLinks.length > 0 && subLinks.map((subLink, index) => (
-          <div key={index}>
-            <Link to={subLink.link}>{subLink.text}</Link>
-          </div>
-        ))}
-      </div>
+  <div className="flex gap-4 items-center px-4 mb-4">
+    <div className="w-[20px]">
+      <i className={`fa-solid ${icon}`}></i>
     </div>
+    <div className="space-x-2 font-semibold mb-2">
+      <a href={link}>
+        <span className="text-2xl">{text}</span>
+      </a>
+      {subLinks.length > 0 && subLinks.map((subLink, index) => (
+        <div key={index}>
+          <Link to={subLink.link}>{subLink.text}</Link>
+        </div>
+      ))}
+    </div>
+  </div>
 )
     

@@ -66,7 +66,7 @@ const DashboardAdmin = () => {
         </button>
       </div>
 
-      <div className={`flex flex-col p-8 gap-4 w-full md:w-1/4 ${menuOpen ? "block" : "hidden"} md:block`}>
+      <div className={`flex  flex-col p-8 gap-4  ${menuOpen ? "block" : "hidden"} md:block`}>
         <NavItem icon="fa-qrcode" text="Dashboard" link="" />
         <NavItem icon="fa-cart-shopping" text="Products" link="" subLinks={[
           { text: "All", link: "/admin/product" },
@@ -74,10 +74,10 @@ const DashboardAdmin = () => {
         ]} />
         <NavItem icon="fa-cart-shopping" text="Orders" link="/admin/orders" />
         <NavItem icon="fa-users" text="Users" link="/admin/users" />
-        <NavItem icon="fa-star" text="Review" link="/admin/review" />
+        {/* <NavItem icon="fa-star" text="Review" link="/admin/review" /> */}
       </div>
 
-      <div className="w-full md:w-3/4 p-4">
+      <div className="w-full p-4">
         <div className="bg-gray-400 text-2xl sm:text-4xl p-3 flex justify-center mb-4">
           Amount
         </div>
@@ -95,9 +95,9 @@ const DashboardAdmin = () => {
           <WidgetItem percent={30} value={totalProducts()} heading="Products" color="rgb(76,0,255)" />
         </section>
 
-        <section className="graph-container mt-8">
+        <section className="graph-container mt-8 h-[200px] w-[500px] flex flex-col lg:flex-row gap-10 ">
           <div className="revenue-chart mb-8">
-            <h2 className="text-center">Revenue & Transaction</h2>
+            <h2 className="text-center font-semibold text-2xl">Revenue & Transaction</h2>
             <BarCharts
               data_2={[300, 144, 433, 655, 237, 755, 190]}
               data_1={[200, 444, 343, 556, 778, 455, 990]}
@@ -108,7 +108,19 @@ const DashboardAdmin = () => {
             />
           </div>
 
-          <div className="dashboard-categories mb-8">
+          <div className="gender-chart w-[300px] h-[300px] flex justify-center flex-col items-center mt-30">
+            <h2 className="text-center font-bold text-3xl p-3">Gender Ratio</h2>
+            <DoughnutChart
+              labels={["Female", "Male"]}
+              data={[12, 19]}
+              backgroundColor={["hsl(340,82%,56%)", "rgba(53,162,235,0.8)"]}
+              cutout={90}
+            />
+            <p className="text-center">
+              <BiMaleFemale />
+            </p>
+          </div>
+          {/* <div className="dashboard-categories mb-8">
             <h2 className="text-center">Inventory</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {data.categories.map((i) => (
@@ -120,22 +132,10 @@ const DashboardAdmin = () => {
                 />
               ))}
             </div>
-          </div>
+          </div> */}
         </section>
 
-        <section className="transaction-container mt-8">
-          <div className="gender-chart">
-            <h2 className="text-center">Gender Ratio</h2>
-            <DoughnutChart
-              labels={["Female", "Male"]}
-              data={[12, 19]}
-              backgroundColor={["hsl(340,82%,56%)", "rgba(53,162,235,0.8)"]}
-              cutout={90}
-            />
-            <p className="text-center">
-              <BiMaleFemale />
-            </p>
-          </div>
+        <section className="transaction-container mt-8 flex justify-center">
         </section>
       </div>
     </div>
@@ -145,11 +145,11 @@ const DashboardAdmin = () => {
 export default DashboardAdmin;
 
 const NavItem = ({ icon, text, link, subLinks = [] }) => (
-  <div className="flex gap-2 items-center px-4">
+  <div className="flex gap-4 items-center px-4 mb-4">
     <div className="w-[20px]">
       <i className={`fa-solid ${icon}`}></i>
     </div>
-    <div className="space-x-2 font-semibold">
+    <div className="space-x-2 font-semibold mb-2">
       <a href={link}>
         <span className="text-2xl">{text}</span>
       </a>
