@@ -163,7 +163,7 @@ const Navbar = () => {
       <ToastContainer />
       <nav className="bg-white w-full z-20 top-0 start-0 border-b-2 shadow-md ">
         <div className="xl:px-10 flex flex-wrap items-center justify-between  p-4">
-          <a href="/" className="flex items-center space-x-4 rtl:space-x-reverse">
+          {/* <a  className="flex items-center space-x-4 rtl:space-x-reverse"> */}
             <span onClick={() => navigateTo('/')}  className="self-center text-3xl font-semibold whitespace-nowrap mr-7">BR Collection</span>
             <span className="self-center text-lg font-normal whitespace-nowrap text-green-600 hover:text-green-800 lg:block hidden" onClick={() => navigateTo('/')}>Home</span>
             <span className="self-center text-lg font-normal whitespace-nowrap text-green-600 hover:text-green-800 lg:block hidden " onClick={() => navigateTo('/product')}>Products</span>
@@ -175,7 +175,7 @@ const Navbar = () => {
                 <span className="self-center text-lg font-normal whitespace-nowrap text-green-600  hover:text-green-800 lg:block hidden" onClick={() => navigateTo('/cart')}>Cart</span>
                 </>
               )}
-          </a>
+          {/* </a> */}
 
           
           {/* <div className="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse "> */}
