@@ -2,6 +2,7 @@ import { doc, getDoc } from 'firebase/firestore';
 import React, { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import { db } from '../Firebase/Config';
+import Navbar from '../Components/Navbar';
 
 const User = () => {
   const [user, setUser] = useState(null);
@@ -39,6 +40,8 @@ const User = () => {
   }
 
   return (
+<>
+    <Navbar/>
     <div className="flex justify-center items-center min-h-screen bg-blue-100">
       <div className="flex flex-col md:flex-row bg-white rounded-lg shadow-2xl transform  transition-transform duration-300 max-w-4xl w-full mx-4">
         <div className="md:w-1/2 p-6 flex items-center justify-center">
@@ -65,6 +68,7 @@ const User = () => {
         </div>
       </div>
     </div>
+</>
   );
 };
 

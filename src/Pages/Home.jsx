@@ -9,12 +9,12 @@ import Banner from '../Components/Banner'
 import Footer from '../Components/Footer'
 import Category from '../Components/Category'
 import DashboardAdmin from './DashboardAdmin'
-import ProductListAdmin from './ProductListAdmin'
+// import ProductListAdmin from './ProductListAdmin'
 
 const Home = () => {
     return (
         <div>
-            <UpperNavbar />
+            {/* <UpperNavbar /> */}
             <Navbar />
             <Main_Section />
             <Sales />

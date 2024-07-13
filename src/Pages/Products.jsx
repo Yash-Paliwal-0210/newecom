@@ -4,6 +4,7 @@ import { db } from '../Firebase/Config';
 import ReactStars from 'react-stars';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 import { toast, ToastContainer } from 'react-toastify';
+import Navbar from '../Components/Navbar';
 
 const Products = () => {
     const [selectedCategory, setSelectedCategory] = useState("all");
@@ -104,6 +105,7 @@ const Products = () => {
 
     return (
         <>
+        <Navbar/>
             {loading ? (
                 <div className="loader-container flex items-center justify-center h-screen">
                     <div className="loader">
@@ -123,7 +125,7 @@ const Products = () => {
                         <h1 className="text-3xl font-bold mb-4">Products</h1>
 
                         {/* Always visible search bar */}
-                        <div className="mb-4 flex">
+                        <div className="mb-4 flex lg:hidden">
                             <input
                                 type="text"
                                 id="filter-search"
@@ -145,7 +147,7 @@ const Products = () => {
                         </div>
 
                         {/* Filters dropdown */}
-                        <div className="mb-4 md:hidden">
+                        <div className="mb-4 lg:hidden">
                             <button
                                 onClick={toggleFilters}
                                 className="px-4 py-2 text-sm font-medium text-white bg-blue-500 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
@@ -207,7 +209,7 @@ const Products = () => {
                         </div>
 
                         {/* Filters section for medium and larger screens */}
-                        <div className="hidden md:block mb-4">
+                        <div className="hidden md:hidden mb-4 lg:flex lg:gap-10">
                             <div className="flex items-center mb-2">
                                 <label htmlFor="filter-category" className="mr-2 text-sm font-medium">Category:</label>
                                 <select

@@ -161,13 +161,45 @@ const Navbar = () => {
   return (
     <>
       <ToastContainer />
-      <nav className="bg-white w-full z-20 top-0 start-0 border-b-2 border-gray-300">
-        <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
-          <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-            <span className="self-center text-3xl font-semibold whitespace-nowrap">BR Collection</span>
+      <nav className="bg-white w-full z-20 top-0 start-0 border-b-2 shadow-md ">
+        <div className="xl:px-10 flex flex-wrap items-center justify-between  p-4">
+          <a href="/" className="flex items-center space-x-4 rtl:space-x-reverse">
+            <span onClick={() => navigateTo('/')}  className="self-center text-3xl font-semibold whitespace-nowrap mr-7">BR Collection</span>
+            <span className="self-center text-lg font-normal whitespace-nowrap text-green-600 hover:text-green-800 lg:block hidden" onClick={() => navigateTo('/')}>Home</span>
+            <span className="self-center text-lg font-normal whitespace-nowrap text-green-600 hover:text-green-800 lg:block hidden " onClick={() => navigateTo('/product')}>Products</span>
+            <span className="self-center text-lg font-normal whitespace-nowrap text-green-600  hover:text-green-800 lg:block hidden" onClick={() => navigateTo('/contact')}>Contact</span>
+            <span className="self-center text-lg font-normal whitespace-nowrap text-green-600  hover:text-green-800 lg:block hidden" onClick={() => navigateTo('/')}>About</span>
+            
+            {isLoggedIn && (
+                <>
+                <span className="self-center text-lg font-normal whitespace-nowrap text-green-600  hover:text-green-800 lg:block hidden" onClick={() => navigateTo('/cart')}>Cart</span>
+                </>
+              )}
           </a>
+
+          
           {/* <div className="flex lg:order-2 space-x-3 lg:space-x-0 rtl:space-x-reverse "> */}
-            <form className="hidden sm:flex  items-center  ">
+            {/* <form className="hidden sm:flex  items-center  ">
+              <label htmlFor="simple-search" className="sr-only">Search</label>
+              <div className="relative w-full">
+                <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
+                  <svg className="w-4 h-4 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5v10M3 5a2 2 0 1 0 0-4 2 2 0 0 0 0 4Zm0 10a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm12 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm0 0V6a3 3 0 0 0-3-3H9m1.5-2-2 2 2 2" />
+                  </svg>
+                </div>
+                <input onChange={(e) => setLink(e.target.value)} value={link} type="text" id="simple-search" className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full ps-10 p-2.5" placeholder="What are you looking for?" required />
+              </div>
+              <button type="submit" onClick={() => link && navigateTo(`/product?q=${link}`)} className="p-2.5 ms-2 mr-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300">
+                <svg className="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                  <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                </svg>
+              <span className="sr-only">Search</span>
+              </button>
+            </form> */}
+            <div className="hidden lg:flex items-center space-x-3">
+              {/* <a href="#"><img src={heart} alt="Liked" style={{ height: "30px", width: "30px", padding: "2px" }} /></a> */}
+              {/* <a href="/cart"><img src={cart} alt="Cart" style={{ height: "30px", width: "30px", padding: "2px" }} /></a> */}
+              <form className="hidden sm:flex  items-center  ">
               <label htmlFor="simple-search" className="sr-only">Search</label>
               <div className="relative w-full">
                 <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -184,11 +216,9 @@ const Navbar = () => {
               <span className="sr-only">Search</span>
               </button>
             </form>
-            <div className="hidden lg:flex items-center space-x-3">
-              {/* <a href="#"><img src={heart} alt="Liked" style={{ height: "30px", width: "30px", padding: "2px" }} /></a> */}
-              <a href="/cart"><img src={cart} alt="Cart" style={{ height: "30px", width: "30px", padding: "2px" }} /></a>
               {!isLoggedIn && (
                 <>
+                
                   <a href="#" onClick={() => navigateTo('/auth/Login')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Login</a>
                   <a href="#" onClick={() => navigateTo('/auth/SignUp')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Sign Up</a>
                 </>

@@ -1,6 +1,7 @@
 import AdminSidebar from "../../components/AdminSidebar";
-import { DoughnutChart, PieChart } from "../../components/Charts";
+// import { DoughnutChart, PieChart } from "../../components/Charts";
 import { categories } from "../../Assets/data.json";
+import { DoughnutChart, PieChart } from "../../Components/Charts";
 
 const PieCharts = () => {
   return (
@@ -11,7 +12,7 @@ const PieCharts = () => {
         <section>
           <div>
             <PieChart
-              labels={["Processing", "Shipped", "Delivered"]}
+              labels={["Processing", "Shipped", "Delivered",]}
               data={[12, 9, 13]}
               backgroundColor={[
                 `hsl(110,80%, 80%)`,

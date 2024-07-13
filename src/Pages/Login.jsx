@@ -121,6 +121,7 @@ import { auth } from '../Firebase/Config';
 import { useSelector } from 'react-redux';
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Navbar from '../Components/Navbar';
 
 const Login = () => {
   const [login, setLogin] = useState({ email: '', password: '' });
@@ -164,6 +165,7 @@ const Login = () => {
   return (
     <>
       <ToastContainer />
+      {/* <Navbar/> */}
       <section className='bg-blue-200 dark:bg-gray-900 min-h-screen flex items-center justify-center'>
         <div className='bg-white shadow-md rounded-lg flex flex-col md:flex-row overflow-hidden'>
           <div className='md:w-1/2 hidden md:flex items-center justify-center bg-cover bg-center' style={{ backgroundImage: 'url(https://picsum.photos/800/600?random=7)' }}>

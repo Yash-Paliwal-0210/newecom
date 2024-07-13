@@ -5,6 +5,7 @@ import { deleteDoc, doc, updateDoc } from "firebase/firestore";
 import { db } from "../Firebase/Config";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Navbar from "../Components/Navbar";
 
 const AllProductAdmin = () => {
   const [editingProduct, setEditingProduct] = useState(null); // State to hold product being edited
@@ -100,7 +101,9 @@ const AllProductAdmin = () => {
   const categories = ["all", "Ethinic", "Kurti", "Ambrella", "Nayra","Pant", "Dupatta"]; // List of categories
 
   return (
-    <div className="max-w-screen-lg mx-auto">
+    <>
+    <Navbar/>
+    <div className="max-w-screen-lg mx-auto mt-4">
       <h2 className="text-center text-2xl font-bold mb-4">Product Table</h2>
       <div className="overflow-x-auto">
         <table className="w-full border-collapse border-gray-300">
@@ -233,6 +236,7 @@ const AllProductAdmin = () => {
       )}
       <ToastContainer />
     </div>
+    </>
   );
 };
 

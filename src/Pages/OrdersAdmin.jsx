@@ -6,6 +6,7 @@ import { FetchAllOrders } from "../Redux/Orders/OrderReducer";
 import { FetchAllProduct } from "../Redux/Products/ProductReducer";
 import { Link, useNavigate } from "react-router-dom";
 import { updateOrderStatus } from "../Firebase/utils/updateOrderStatus"; // Import your Firebase update function
+import Navbar from "../Components/Navbar";
 
 const OrdersAdmin = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -38,6 +39,8 @@ const OrdersAdmin = () => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="flex flex-col md:flex-row w-full">
       <div className="p-4 md:hidden">
         <button
@@ -74,7 +77,7 @@ const OrdersAdmin = () => {
 
       <div className="w-full shadow-md sm:rounded-lg">
         <div className="text-4xl text-center py-4 font-semibold">Orders</div>
-        <div className="w-full shadow-md sm:rounded-lg">
+        <div className="w-full overflow-x-auto">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
@@ -120,8 +123,9 @@ const OrdersAdmin = () => {
                         className="bg-white border border-gray-300 rounded px-2 py-1"
                       >
                         <option value="processing">Processing</option>
-                        <option value="shipping">Shipping</option>
+                        <option value="shipped">Shipped</option>
                         <option value="delivered">Delivered</option>
+                        <option value="cancelled">Cancelled</option>
                       </select>
                     </td>
                   </tr>
@@ -132,6 +136,7 @@ const OrdersAdmin = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

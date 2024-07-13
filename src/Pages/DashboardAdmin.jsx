@@ -9,6 +9,7 @@ import data from "../Assets/data.json";
 import { BiMaleFemale } from "react-icons/bi";
 import BarCharts from "./Charts/Barcharts";
 import { DoughnutChart } from "../Components/Charts";
+import Navbar from "../Components/Navbar";
 
 const DashboardAdmin = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -57,6 +58,8 @@ const DashboardAdmin = () => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="flex flex-col md:flex-row w-full">
       <div className="p-4 md:hidden">
         <button
@@ -163,6 +166,7 @@ const DashboardAdmin = () => {
         </section>
       </div>
     </div>
+    </>
   );
 };
 

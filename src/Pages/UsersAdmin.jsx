@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FetchAllUsers, UpdateUserRole } from "../Redux/User/UserReducer";
 import { Link, useNavigate } from "react-router-dom";
+import Navbar from "../Components/Navbar";
 
 const UsersAdmin = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -26,6 +27,8 @@ const UsersAdmin = () => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="flex flex-col md:flex-row w-full">
       <div className="p-4 md:hidden">
         <button
@@ -63,25 +66,15 @@ const UsersAdmin = () => {
 
       <div className="w-full shadow-md sm:rounded-lg">
         <div className="text-4xl text-center py-4 font-semibold">Users</div>
-        <div className="w-full shadow-md sm:rounded-lg">
+        <div className="w-full overflow-x-auto">
           <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
             <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
               <tr>
-              <th scope="col" className="px-6 py-3">
-                  UserID
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Name
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Email
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Role
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Actions
-                </th>
+                <th scope="col" className="px-6 py-3">UserID</th>
+                <th scope="col" className="px-6 py-3">Name</th>
+                <th scope="col" className="px-6 py-3">Email</th>
+                <th scope="col" className="px-6 py-3">Role</th>
+                <th scope="col" className="px-6 py-3">Actions</th>
               </tr>
             </thead>
             <tbody>
@@ -123,6 +116,7 @@ const UsersAdmin = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

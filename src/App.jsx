@@ -20,7 +20,7 @@ import User from "./Pages/User";
 import Description from "./Pages/Description";
 import DashboardAdmin from "./Pages/DashboardAdmin";
 import Checkout from "./Pages/Checkout";
-import ProductListAdmin from "./Pages/ProductListAdmin";
+// import ProductListAdmin from "./Pages/ProductListAdmin";
 import OrdersAdmin from "./Pages/OrdersAdmin";
 import UsersAdmin from "./Pages/UsersAdmin";
 import ReviewAdmin from "./Pages/ReviewAdmin";
@@ -72,7 +72,7 @@ function App() {
             <Route path='description/:id' element={<Description />} />
             <Route path='admin/dashboard' element={<DashboardAdmin />} />
             <Route path='/checkout' element={<Checkout />} />
-            <Route path='/admin/allproducts' element={<ProductListAdmin />} />
+            {/* <Route path='/admin/allproducts' element={<ProductListAdmin />} /> */}
             <Route path='/admin/orders' element={<OrdersAdmin />} />
             <Route path='/admin/users' element={<UsersAdmin />} />
             <Route path='/admin/review' element={<ReviewAdmin />} />

@@ -5,6 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import Navbar from '../Components/Navbar';
 
 function AddProductForm() {
   const [name, setName] = useState('');
@@ -70,6 +71,8 @@ function AddProductForm() {
   };
 
   return (
+<>
+    <Navbar/>
     <div className="flex items-center justify-center min-h-screen bg-gray-100">
       <ToastContainer position="top-right" autoClose={5000} />
       <form onSubmit={handleSubmit} className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg space-y-6">
@@ -140,6 +143,7 @@ function AddProductForm() {
         </button>
       </form>
     </div>
+</>
   );
 }
 
