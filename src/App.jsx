@@ -30,6 +30,8 @@ import OrderSummary from "./Pages/OrderSummary";
 import UpdateProfleAdmin from "./Pages/UpdateProfleAdmin";
 import MyOrders from "./Pages/MyOrders";
 import OrderDetails from "./Pages/OrderDetails";
+import About from "./Pages/About";
+import Contact from "./Pages/Contact";
 
 function App() {
   const dispatch = useDispatch();
@@ -66,8 +68,8 @@ function App() {
             <Route path='auth/Reset' element={<Resetpassword />} />
             <Route path='admin/product/new' element={<AddProductForm />} />
             <Route path='admin/product' element={<AllProductAdmin />} />
-            <Route path='product' element={<Products />} />
-            <Route path='cart' element={<Cart />} />
+            <Route path='/product' element={<Products />} />
+            <Route path='/cart' element={<Cart />} />
             <Route path='profile' element={<User />} />
             <Route path='description/:id' element={<Description />} />
             <Route path='admin/dashboard' element={<DashboardAdmin />} />
@@ -81,6 +83,8 @@ function App() {
             <Route path='/updateProfileAdmin' element={<UpdateProfleAdmin />} />
             <Route path='/order/me' element={<MyOrders />} />
             <Route path='/order/mee' element={<OrderDetails/>}/>
+            <Route path='/about' element={<About/>}/>
+            <Route path='/contact' element={<Contact />}/>
           </Route>
         </Routes>
       </Router>

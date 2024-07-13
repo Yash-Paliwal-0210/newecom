@@ -119,10 +119,12 @@ const Products = () => {
                     </div>
                 </div>
             ) : (
-                <div className="container mx-auto px-6 py-6">
+                <div className=''>
+                    
+                <div className="container mx-auto px-6 py-6 ">
                     <div className='flex flex-col justify-center items-center'>
 
-                        <h1 className="text-3xl font-bold mb-4">Products</h1>
+                        <h1 className="text-3xl font-extrabold mb-4">Products</h1>
 
                         {/* Always visible search bar */}
                         <div className="mb-4 flex lg:hidden">
@@ -268,6 +270,7 @@ const Products = () => {
                         ))}
                     </div>
                     <ToastContainer />
+                </div>
                 </div>
             )}
         </>
