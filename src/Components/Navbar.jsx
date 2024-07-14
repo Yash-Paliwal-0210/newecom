@@ -77,8 +77,8 @@ const Navbar = () => {
               {!isLoggedIn && (
                 <>
                 
-                  <a href="#" onClick={() => navigateTo('/auth/Login')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Login</a>
-                  <a href="#" onClick={() => navigateTo('/auth/SignUp')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Sign Up</a>
+                  <a href="" onClick={() => navigateTo('/auth/Login')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Login</a>
+                  <a href="" onClick={() => navigateTo('/auth/SignUp')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Sign Up</a>
                 </>
               )}
               {isLoggedIn && (
@@ -94,15 +94,15 @@ const Navbar = () => {
                   </button>
                   {dropdownOpen && (
                     <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg py-2 z-10">
-                      <a href="#" onClick={() => navigateTo('/profile')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
+                      <a href="" onClick={() => navigateTo('/profile')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
                       <a href="/order/me" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</a>
                     {/* <a href="/liked" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Liked</a> */}
                       {role === "admin" && (
-                        <a href="#" onClick={() => navigateTo('/admin/dashboard')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Dashboard</a>
+                        <a href="" onClick={() => navigateTo('/admin/dashboard')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Dashboard</a>
                       )}
-                        <a href="#" onClick={() => navigateTo('/cart')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</a>
+                        <a href="" onClick={() => navigateTo('/cart')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</a>
 
-                      <a href="#" onClick={handleLogout} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>
+                      <a href="" onClick={handleLogout} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>
                     </div>
                   )}
                 </div>
@@ -121,15 +121,15 @@ const Navbar = () => {
                 </button>
                 {dropdownOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg py-2 z-10">
-                    <a href="#" onClick={() => navigateTo('/profile')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
+                    <a href="" onClick={() => navigateTo('/profile')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
                     <a href="/order/mee" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</a>
 
                     {/* <a href="/liked" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Liked</a>  */}
                     {role === "admin" && (
-                      <a href="#" onClick={() => navigateTo('/admin/dashboard')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Dashboard</a>
+                      <a href="" onClick={() => navigateTo('/admin/dashboard')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Dashboard</a>
                     )}
-                    <a href="#" onClick={() => navigateTo('/cart')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</a>
-                    <a href="#" onClick={handleLogout} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>
+                    <a href="" onClick={() => navigateTo('/cart')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</a>
+                    <a href="" onClick={handleLogout} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>
                   </div>
                 )}
               </div>

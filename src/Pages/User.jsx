@@ -9,9 +9,12 @@ const User = () => {
   const [user, setUser] = useState(null);
   const userDetail = useSelector(state => state.user);
   const navigateTo = useNavigate();
+
   useEffect(() => {
-    fetchUserData();
-  }, []);
+    if (userDetail && userDetail.userId) {
+      fetchUserData();
+    }
+  }, [userDetail]);
 
   const fetchUserData = async () => {
     try {
@@ -77,13 +80,13 @@ const User = () => {
             </div>
             <div className="flex justify-center mt-8 space-x-4">
               <button
-               onClick={() => navigateTo('/order/me')} 
+                onClick={() => navigateTo('/order/me')}
                 className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
                 My Orders
               </button>
               <button
-                onClick={() => navigateTo('/auth/Reset')} 
+                onClick={() => navigateTo('/auth/Reset')}
                 className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
               >
                 Reset Password

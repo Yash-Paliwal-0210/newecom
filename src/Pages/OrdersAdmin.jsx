@@ -135,11 +135,13 @@ const OrdersAdmin = () => {
           </table>
         </div> */}
         <div className="w-full overflow-x-auto">
-  <table className="w-full text-xs sm:text-sm md:text-base text-left rtl:text-right text-gray-500 dark:text-gray-400">
-    <thead className="text-xs sm:text-sm md:text-base text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+  <table className="w-full text-xs sm:text-sm md:text-base text-left rtl:text-right text-gray-500">
+    <thead className="text-xs sm:text-sm md:text-base text-gray-700 uppercase bg-gray-50  ">
       <tr>
         <th scope="col" className="px-2 py-3 sm:px-3 md:px-4">Order Id</th>
         <th scope="col" className="px-2 py-3 sm:px-3 md:px-4">Status</th>
+        <th scope="col" className="px-2 py-3 sm:px-3 md:px-4">Payment Status</th>
+
         <th scope="col" className="px-2 py-3 sm:px-3 md:px-4">Name</th>
         <th scope="col" className="px-2 py-3 sm:px-3 md:px-4">Price</th>
         <th scope="col" className="px-2 py-3 sm:px-3 md:px-4">Quantity</th>
@@ -156,6 +158,7 @@ const OrdersAdmin = () => {
           <tr key={order.id} className="border-b border-gray-300">
             <td className="px-2 py-3 sm:px-3 md:px-4">{order.id}</td>
             <td className="px-2 py-3 sm:px-3 md:px-4">{order.deliver_stauts}</td>
+            <td className="px-2 py-3 sm:px-3 md:px-4">{order.paymentStatus}</td>
             <td className="px-2 py-3 sm:px-3 md:px-4">{order.firstName} {order.lastName}</td>
             <td className="px-2 py-3 sm:px-3 md:px-4">₹{order.price}</td>
             <td className="px-2 py-3 sm:px-3 md:px-4">{totalQuantity}</td>
