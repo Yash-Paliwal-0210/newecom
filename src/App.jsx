@@ -34,10 +34,10 @@ import About from "./Pages/About";
 import Contact from "./Pages/Contact";
 
 function App() {
-  console.log("app")
+  // console.log("app")
   const dispatch = useDispatch();
   useEffect(() => {
-    console.log(dispatch);
+    // console.log(dispatch);
     onAuthStateChanged(auth, async(user) => {
       if (user) {
         const uid = user.uid;
@@ -48,7 +48,7 @@ function App() {
           email: user.email,
           userName: user.displayName,
           userId: user.uid,
-          createdAt: query.createdAt,
+          createdAt: query?.createdAt,
           wishList: query.wishList,
           role: query.Role,
         }))
