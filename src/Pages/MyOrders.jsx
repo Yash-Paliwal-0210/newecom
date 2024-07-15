@@ -1,7 +1,29 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Navbar from '../Components/Navbar';
+import { useParams } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { getDoc } from 'firebase/firestore';
+import { db } from '../Firebase/Config';
+import { setProduct } from '../Redux/Products/ProductReducer';
 
 const MyOrders = () => {
+
+
+  const { id } = useParams();
+  const [product, setProduct] = useState();
+  const [loading, setLoading] = useState(true);
+  const dispatch = useDispatch();
+  const {userId} = useSelector(state=>state.user);
+
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  const fetchData = async () => {
+    const querySnapshot = await getDoc(doc(db, "Products", id));
+    setProduct(querySnapshot.data());
+    setLoading(false);
+  }
   return (
     <>
       <Navbar />
