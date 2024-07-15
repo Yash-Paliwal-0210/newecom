@@ -63,11 +63,11 @@ export default function Sales() {
             <div className="hidden sm:flex flex-wrap xl:mx-32 py-6 sm:flex-row sm:flex gap-5 md:gap-10 justify-center mx-0 sm:mx-0 md:mx-10 lg:mx-10">
                 {products.slice(0, 4).map((doc, index) => (
                     <div key={doc.Id} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow " style={{ width: "280px" }}>
-                        <a href="#">
+                        <a href="">
                             <img className="p-3 rounded-t-lg" src={`https://picsum.photos/800/600?random=${index}`} alt="product" />
                         </a>
                         <div className="px-5 pb-5">
-                            <a href="#">
+                            <a href="">
                                 <h5 onClick={() => navigateTo(`/Description/${doc.Id}`)} className="text-xl font-semibold tracking-tight text-gray-900 ">{doc.Name}</h5>
                             </a>
                             <div className="flex items-center mt-2.5 mb-5">
@@ -89,11 +89,11 @@ export default function Sales() {
             <div className="sm:hidden flex-wrap xl:mx-32 py-6 px-2 flex-row flex gap-5 md:gap-10 justify-center mx-0 sm:mx-0 md:mx-10 lg:mx-10">
                 {products.slice(0, 4).map((doc, index) => (
                     <div key={doc.Id} className="flex flex-row xl:hidden bg-white border border-gray-200 rounded-lg shadow " style={{ width: "420px", height: "auto" }}>
-                        <a href="#" className="flex-shrink-0">
+                        <a href="" className="flex-shrink-0">
                             <img className="w-40 h-full object-cover rounded-l-lg" src={`https://picsum.photos/800/600?random=${index}`} alt="product" />
                         </a>
                         <div className="flex flex-col justify-between p-4 w-full">
-                            <a href="#">
+                            <a href="">
                                 <h5 onClick={() => navigateTo(`/Description/${doc.Id}`)} className="text-sm sm:text-xl font-semibold tracking-tight text-gray-900 ">{doc.Name}</h5>
                             </a>
                             <div className="flex items-center">

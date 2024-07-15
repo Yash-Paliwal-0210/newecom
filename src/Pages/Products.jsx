@@ -122,10 +122,12 @@ const Products = () => {
                     </div>
                 </div>
             ) : (
-                <div className="container mx-auto px-6 py-6">
+                <div className=''>
+                    
+                <div className="container mx-auto px-6 py-6 ">
                     <div className='flex flex-col justify-center items-center'>
 
-                        <h1 className="text-3xl font-bold mb-4">Products hello</h1>
+                        <h1 className="text-3xl font-extrabold mb-4">Products</h1>
 
                         {/* Always visible search bar */}
                         <div className="mb-4 flex lg:hidden">
@@ -272,6 +274,7 @@ const Products = () => {
                     </div>
                     <ToastContainer />
                 </div>
+                </div>
             )}
         </>
     );
@@ -342,12 +345,12 @@ const Product = ({ doc }) => {
         <>
 
             <div key={doc.Id} className="flex flex-row xl:hidden sm:hidden  bg-white border border-gray-200 rounded-lg shadow " style={{ width: "420px", height: "auto" }}>
-                <a href="#" className="flex-shrink-0">
+                <a href="" className="flex-shrink-0">
                     <img className="w-40 h-full object-cover rounded-l-lg" src={"https://picsum.photos/800/600?random=6"} alt="product image" />
                 </a>
                 <div className="flex flex-col justify-between p-4 w-full">
-                    <a href="#">
-                        <h5 onClick={() => navigateTo(`/description/${doc.Id}`)} className=" text-sm sm:text-xl font-semibold tracking-tight text-gray-900 ">{doc.Name}</h5>
+                    <a href="">
+                        <h5 onClick={() => navigateTo(`/Description/${doc.Id}`)} className=" text-sm sm:text-xl font-semibold tracking-tight text-gray-900 ">{doc.Name}</h5>
                     </a>
                     <div className="flex items-center">
                         <ReactStars half={true} edit={false} value={doc.Rating} count={5} size={24} color2={'#ffd700'} />
@@ -362,11 +365,11 @@ const Product = ({ doc }) => {
             </div>
 
             <div id={doc} className="w-full max-w-sm hidden sm:block bg-white border border-gray-200 rounded-lg shadow " style={{ width: "280px" }}>
-                <a href="#">
+                <a href="">
                     <img className="p-3 rounded-t-lg" src={"https://picsum.photos/800/600?random=3"} alt="product image" />
                 </a>
                 <div className="px-5 pb-5">
-                    <a href="#">
+                    <a href="">
                         <h5 className="text-xl font-semibold tracking-tight text-gray-900 ">{doc.Name}</h5>
                     </a>
                     <div className="flex items-center mt-2.5 mb-5">

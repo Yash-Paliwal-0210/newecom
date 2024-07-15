@@ -1,7 +1,7 @@
 // src/main.jsx
 
 import React from 'react';
-import ReactDOM from 'react-dom'; // Import ReactDOM correctly
+import ReactDOM from 'react-dom/client'; // Correctly import from 'react-dom/client'
 import './index.css';
 import App from './App';
 import store from './Redux/Store'; // Adjust the path to your Redux store
