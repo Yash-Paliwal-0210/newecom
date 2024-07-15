@@ -70,7 +70,7 @@ const Payment = () => {
         await updateDoc(doc(db, "Orders", SearchParams.get("q")), {
           paymentDetails: data,
           paymentStatus: "paid",
-          deliver_stauts: "processing",
+          deliver_status: "processing",
         });
 
         // adding in user

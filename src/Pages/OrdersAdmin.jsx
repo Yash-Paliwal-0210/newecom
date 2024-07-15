@@ -22,9 +22,9 @@ const OrdersAdmin = () => {
   }, []);
 
   const fetchUser_order = async () => {
-    dispatch(FetchAllUsers());
+    // dispatch(FetchAllUsers());
     dispatch(FetchAllOrders());
-    dispatch(FetchAllProduct());
+    // dispatch(FetchAllProduct());
   };
 
   const toggleMenu = () => {
@@ -77,63 +77,6 @@ const OrdersAdmin = () => {
 
       <div className="w-full shadow-md sm:rounded-lg">
         <div className="text-4xl text-center py-4 font-semibold">Orders</div>
-        {/* <div className="w-full overflow-x-auto">
-          <table className="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead className="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-              <tr>
-                <th scope="col" className="px-6 py-3">
-                  Order Id
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Status
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Name
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Price
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Quantity
-                </th>
-                <th scope="col" className="px-6 py-3">
-                  Actions
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {orders.map((order) => {
-                const totalQuantity = order.productIdQuantityArray.reduce(
-                  (acc, item) => acc + item.quantity,
-                  0
-                );
-                return (
-                  <tr key={order.id} className="border-b border-gray-300">
-                    <td className="p-3">{order.id}</td>
-                    <td className="p-3">{order.deliver_stauts}</td>
-                    <td className="p-3">
-                      {order.firstName} {order.lastName}
-                    </td>
-                    <td className="p-3">₹{order.price}</td>
-                    <td className="p-3">{totalQuantity}</td>
-                    <td className="p-3">
-                      <select
-                        value={order.deliver_status}
-                        onChange={(e) => handleStatusChange(order.id, e.target.value)}
-                        className="bg-white border border-gray-300 rounded px-2 py-1"
-                      >
-                        <option value="processing">Processing</option>
-                        <option value="shipped">Shipped</option>
-                        <option value="delivered">Delivered</option>
-                        <option value="cancelled">Cancelled</option>
-                      </select>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div> */}
         <div className="w-full overflow-x-auto">
   <table className="w-full text-xs sm:text-sm md:text-base text-left rtl:text-right text-gray-500">
     <thead className="text-xs sm:text-sm md:text-base text-gray-700 uppercase bg-gray-50  ">
@@ -157,7 +100,7 @@ const OrdersAdmin = () => {
         return (
           <tr key={order.id} className="border-b border-gray-300">
             <td className="px-2 py-3 sm:px-3 md:px-4">{order.id}</td>
-            <td className="px-2 py-3 sm:px-3 md:px-4">{order.deliver_stauts}</td>
+            <td className="px-2 py-3 sm:px-3 md:px-4">{order.deliver_status}</td>
             <td className="px-2 py-3 sm:px-3 md:px-4">{order.paymentStatus}</td>
             <td className="px-2 py-3 sm:px-3 md:px-4">{order.firstName} {order.lastName}</td>
             <td className="px-2 py-3 sm:px-3 md:px-4">₹{order.price}</td>

@@ -343,7 +343,7 @@ const Product = ({ doc }) => {
 
             <div key={doc.Id} className="flex flex-row xl:hidden sm:hidden  bg-white border border-gray-200 rounded-lg shadow " style={{ width: "420px", height: "auto" }}>
                 <a href="" className="flex-shrink-0">
-                    <img className="w-40 h-full object-cover rounded-l-lg" src={"https://picsum.photos/800/600?random=6"} alt="product image" />
+                    <img className="w-40 h-full object-cover rounded-l-lg" src={doc.ImageUrl} alt="product image" />
                 </a>
                 <div className="flex flex-col justify-between p-4 w-full">
                     <a href="">
