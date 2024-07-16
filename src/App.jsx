@@ -32,6 +32,7 @@ import MyOrders from "./Pages/MyOrders";
 import OrderDetails from "./Pages/OrderDetails";
 import About from "./Pages/About";
 import Contact from "./Pages/Contact";
+import BannerAdmin from "./Pages/BannerAdmin";
 
 function App() {
   // console.log("app")
@@ -87,6 +88,7 @@ function App() {
             <Route exact path='/order/mee' element={<OrderDetails/>}/>
             <Route exact path='/about' element={<About/>}/>
             <Route exact path='/contact' element={<Contact />}/>
+            <Route exact path='/admin/banner' element={<BannerAdmin />}/>
           </Route>
         </Routes>
       </Router>

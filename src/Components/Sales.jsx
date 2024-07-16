@@ -67,9 +67,9 @@ export default function Sales() {
                             <img className="p-3 rounded-t-lg" src={`https://picsum.photos/800/600?random=${index}`} alt="product" />
                         </a>
                         <div className="px-5 pb-5">
-                            <a href="">
-                                <h5 onClick={() => navigateTo(`/Description/${doc.Id}`)} className="text-xl font-semibold tracking-tight text-gray-900 ">{doc.Name}</h5>
-                            </a>
+                            <div>
+                                <h5 onClick={() => navigateTo(`/Description/${doc.Id}`)} className="cursor-pointer text-xl font-semibold tracking-tight text-gray-900 ">{doc.Name}</h5>
+                            </div>
                             <div className="flex items-center mt-2.5 mb-5">
                                 <div className="flex items-center space-x-1 rtl:space-x-reverse">
                                     <ReactStars half={true} edit={false} value={doc.Rating} count={5} size={24} color2={'#ffd700'} />
@@ -93,9 +93,9 @@ export default function Sales() {
                             <img className="w-40 h-full object-cover rounded-l-lg" src={`https://picsum.photos/800/600?random=${index}`} alt="product" />
                         </a>
                         <div className="flex flex-col justify-between p-4 w-full">
-                            <a href="">
-                                <h5 onClick={() => navigateTo(`/Description/${doc.Id}`)} className="text-sm sm:text-xl font-semibold tracking-tight text-gray-900 ">{doc.Name}</h5>
-                            </a>
+                            <div >
+                                <h5 onClick={() => navigateTo(`/Description/${doc.Id}`)} className="cursor-pointer text-sm sm:text-xl font-semibold tracking-tight text-gray-900 ">{doc.Name}</h5>
+                            </div>
                             <div className="flex items-center">
                                 <ReactStars half={true} edit={false} value={doc.Rating} count={5} size={24} color2={'#ffd700'} />
                                 <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded  ml-3">{doc.Rating}</span>
@@ -110,7 +110,7 @@ export default function Sales() {
             </div>
 
             <div className='py-4 flex justify-center mb-10'>
-                <a href="http://localhost:5173/product"><button className='px-14 py-4 text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-center '>View All Products</button></a>
+                <div onClick={()=> navigateTo('/product')}><button className='px-14 py-4 text-white bg-red-500 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-center '>View All Products</button></div>
             </div>
         </div>
     );
