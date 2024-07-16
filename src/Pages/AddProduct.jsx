@@ -113,7 +113,7 @@ function AddProductForm() {
             menuOpen ? "block" : "hidden"
           } md:block w-full md:w-64 bg-slate-50 border-3 p-4 transition-transform duration-300 ease-in-out`}
         >
-          <div onClick={() => navigateTo("/admin/dashboard")}>
+          <div >
             <NavItem icon="fa-qrcode" text="Dashboard" link="/admin/dashboard" />
           </div>
           <NavItem

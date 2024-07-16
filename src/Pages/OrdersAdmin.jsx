@@ -36,6 +36,7 @@ const OrdersAdmin = () => {
     await updateOrderStatus(orderId, newStatus);
     // Optionally, you can dispatch an action to update the local state
     dispatch(FetchAllOrders());
+    
   };
 
   return (
