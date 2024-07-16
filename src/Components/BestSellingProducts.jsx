@@ -61,7 +61,7 @@ export default function BestSellingProducts() {
                 {
                     products.slice(0, 4).map((doc, index) => {
                         return (
-                            <div id={doc} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow  " style={{ width: "280px" }}>
+                            <div key={index} id={doc} className="w-full max-w-sm bg-white border border-gray-200 rounded-lg shadow  " style={{ width: "280px" }}>
                                 <a href="">
                                     <img className="p-3 rounded-t-lg" src={"https://picsum.photos/800/600?random=8"} alt="product image" />
                                 </a>

@@ -19,6 +19,8 @@ export default function Sales() {
     const getProduct = async () => {
         const querySnapshot = await getDocs(collection(db, "Products"));
 
+        console.log("querySnapshot",querySnapshot)
+
         const productsArray = [];
         querySnapshot.forEach((doc) => {
             const productData = doc.data();
