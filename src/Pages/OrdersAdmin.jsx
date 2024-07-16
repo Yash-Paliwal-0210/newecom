@@ -65,6 +65,7 @@ const OrdersAdmin = () => {
           subLinks={[
             { text: "All", link: "/admin/product" },
             { text: "New", link: "/admin/product/new" },
+            { text: "Banner", link: "/admin/banner" },
           ]}
         />
         <div onClick={() => navigateTo("/admin/orders")}>

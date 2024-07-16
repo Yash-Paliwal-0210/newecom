@@ -38,7 +38,7 @@ const Navbar = () => {
       <ToastContainer />
       <nav className="bg-white w-full z-20 top-0 start-0 border-b-2 shadow-md ">
         <div className="xl:px-10 flex flex-wrap items-center justify-between  p-4">
-          <a className="flex items-center space-x-4 rtl:space-x-reverse cursor-pointer">
+          <div className="flex items-center space-x-4 rtl:space-x-reverse cursor-pointer">
             <span onClick={() => navigateTo('/')}  className="self-center text-3xl font-semibold whitespace-nowrap mr-7">BR Collection</span>
             <span className="self-center text-lg font-normal whitespace-nowrap text-green-600 hover:text-green-800 lg:block hidden" onClick={() => navigateTo('/')}>Home</span>
             <span className="self-center text-lg font-normal whitespace-nowrap text-green-600 hover:text-green-800 lg:block hidden " onClick={() => navigateTo('/product')}>Products</span>
@@ -50,7 +50,7 @@ const Navbar = () => {
                 <span className="self-center text-lg font-normal whitespace-nowrap text-green-600  hover:text-green-800 lg:block hidden" onClick={() => navigateTo('/cart')}>Cart</span>
                 </>
               )}
-          </a>
+          </div>
 
           
          
@@ -77,8 +77,8 @@ const Navbar = () => {
               {!isLoggedIn && (
                 <>
                 
-                  <a href="" onClick={() => navigateTo('/auth/Login')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Login</a>
-                  <a href="" onClick={() => navigateTo('/auth/SignUp')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Sign Up</a>
+                  <div onClick={() => navigateTo('/auth/Login')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Login</div>
+                  <div onClick={() => navigateTo('/auth/SignUp')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Sign Up</div>
                 </>
               )}
               {isLoggedIn && (
@@ -94,15 +94,15 @@ const Navbar = () => {
                   </button>
                   {dropdownOpen && (
                     <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg py-2 z-10">
-                      <a href="" onClick={() => navigateTo('/profile')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
-                      <a href="/order/me" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</a>
+                      <div onClick={() => navigateTo('/profile')} className="cursor-default block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</div>
+                      <div onClick={() => navigateTo('/order/me')} className="cursor-default block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</div>
                     {/* <a href="/liked" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Liked</a> */}
                       {role === "admin" && (
-                        <a href="" onClick={() => navigateTo('/admin/dashboard')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Dashboard</a>
+                        <div onClick={() => navigateTo('/admin/dashboard')} className="cursor-default block px-4 py-2 text-gray-700 hover:bg-gray-100">Dashboard</div>
                       )}
-                        <a href="" onClick={() => navigateTo('/cart')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</a>
+                        <div  onClick={() => navigateTo('/cart')} className="cursor-default block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</div>
 
-                      <a href="" onClick={handleLogout} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>
+                      <div onClick={handleLogout} className="cursor-default block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</div>
                     </div>
                   )}
                 </div>
@@ -121,22 +121,22 @@ const Navbar = () => {
                 </button>
                 {dropdownOpen && (
                   <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg py-2 z-10">
-                    <a href="" onClick={() => navigateTo('/profile')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</a>
-                    <a href="/order/mee" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</a>
+                    <div onClick={() => navigateTo('/profile')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</div>
+                    <div onClick={ () => navigateTo('/order/mee')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</div>
 
                     {/* <a href="/liked" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Liked</a>  */}
                     {role === "admin" && (
-                      <a href="" onClick={() => navigateTo('/admin/dashboard')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Dashboard</a>
+                      <div onClick={() => navigateTo('/admin/dashboard')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Dashboard</div>
                     )}
-                    <a href="" onClick={() => navigateTo('/cart')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</a>
-                    <a href="" onClick={handleLogout} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</a>
+                    <div onClick={() => navigateTo('/cart')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</div>
+                    <div onClick={handleLogout} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</div>
                   </div>
                 )}
               </div>
             ) : (
               <div className="flex space-x-3">
-                <a href="/auth/Login" className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Login</a>
-                <a href="/auth/SignUp" className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Sign Up</a>
+                <div onClick={ ()=> navigateTo('/auth/Login')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Login</div>
+                <div onClick={ ()=> navigateTo('/auth/SignUp')}  className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Sign Up</div>
               </div>
             )}
           </div>

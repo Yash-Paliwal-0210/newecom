@@ -18,6 +18,7 @@ const Products = () => {
     const [showFilters, setShowFilters] = useState(false); // State to manage showing/hiding filters
     const navigateTo = useNavigate();
 
+
     console.log("products")
 
     useEffect(() => {
@@ -269,7 +270,7 @@ const Products = () => {
                     {/* Product grid */}
                     <div className="flex flex-wrap justify-center lg:mx-10 gap-4">
                         {products.map((product) => (
-                            <Product key={product.id} doc={product} />
+                            <Product key={product.id}  doc={product} />
                         ))}
                     </div>
                     <ToastContainer />
@@ -300,6 +301,7 @@ const Product = ({ doc }) => {
             progress: undefined,
         });
     };
+    const navigateTo = useNavigate();
 
     return (
         // <div className="max-w-sm mx-auto bg-white border border-gray-200 rounded-lg shadow">
@@ -349,9 +351,9 @@ const Product = ({ doc }) => {
                     <img className="w-40 h-full object-cover rounded-l-lg" src={doc.ImageUrl} alt="product image" />
                 </a>
                 <div className="flex flex-col justify-between p-4 w-full">
-                    <a href="">
-                        <h5 onClick={() => navigateTo(`/Description/${doc.Id}`)} className=" text-sm sm:text-xl font-semibold tracking-tight text-gray-900 ">{doc.Name}</h5>
-                    </a>
+                    <div>
+                        <h5 onClick={() => navigateTo(`/Description/${doc.Id}`)} className="cursor-pointer text-sm sm:text-xl font-semibold tracking-tight text-gray-900 ">{doc.Name}</h5>
+                    </div>
                     <div className="flex items-center">
                         <ReactStars half={true} edit={false} value={doc.Rating} count={5} size={24} color2={'#ffd700'} />
                         <span className="bg-blue-100 text-blue-800 text-xs font-semibold px-2.5 py-0.5 rounded  ml-3">{doc.Rating}</span>
@@ -369,9 +371,9 @@ const Product = ({ doc }) => {
                     <img className="p-3 rounded-t-lg" src={"https://picsum.photos/800/600?random=3"} alt="product image" />
                 </a>
                 <div className="px-5 pb-5">
-                    <a href="">
-                        <h5 className="text-xl font-semibold tracking-tight text-gray-900 ">{doc.Name}</h5>
-                    </a>
+                    <div>
+                        <h5 onClick={() => navigateTo(`/Description/${doc.Id}`)} className="cursor-pointer text-xl font-semibold tracking-tight text-gray-900 ">{doc.Name}</h5>
+                    </div>
                     <div className="flex items-center mt-2.5 mb-5">
                         <div className="flex items-center space-x-1 rtl:space-x-reverse">
                             <ReactStars half={true} edit={false} value={doc.Rating} count={5} size={24} color2={'#ffd700'} />
