@@ -5,6 +5,8 @@ import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
 import { toast } from 'react-toastify';
 import { v4 } from 'uuid';
 import { storage } from '../Firebase/Config';
+import banner from '../Assets/images/add1.jpeg'
+import dltBtn from '../Assets/dltBtn.jpg'
 
 const BannerAdmin = () => {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -33,6 +35,10 @@ const BannerAdmin = () => {
       toast.error("Image upload failed. Please try again.");
     }
   };
+
+  function deleteImgHanlder(index){
+
+  }
 
   return (
     <>
@@ -74,17 +80,31 @@ const BannerAdmin = () => {
         </div>
 
         <div className="w-full pt-3 p-4">
-          <div className="text-center text-2xl font-extrabold mb-4">Images</div>
+          <div className="text-center text-2xl font-extrabold mb-4">Banner Images</div>
+          <input type="file"  className="border p-2 mb-4 md:mb-0 md:mr-4 w-full md:w-auto"
+          style={{marginBottom: '1rem'}} />
+          <button className='inline-flex items-center bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded'>
+                      <svg class="h-8 w-8 "  viewBox="0 0 24 24"  fill="none"  stroke="currentColor"  stroke-width="2"  stroke-linecap="round"  stroke-linejoin="round">  
+            <circle cx="12" cy="12" r="10" />  <polyline points="16 12 12 8 8 12" />  <line x1="12" y1="16" x2="12" y2="8" /></svg>
+          <span>Upload </span>
+            </button>
+          <div className='flex flex-wrap gap-1'>
           {[...Array(5)].map((_, index) => (
-            <div key={index} className="flex flex-col border-b-4 pb-2  md:flex-row items-center justify-between mt-4 space-y-4 md:space-y-0">
-              <img src={`https://via.placeholder.com/100`} alt={`Image ${index + 1}`} className="w-24 h-24 object-cover mb-4 md:mb-0 md:mr-4" />
-              <input type="file" onChange={(e) => setImageUpload(e.target.files[0])} className="border p-2 mb-4 md:mb-0 md:mr-4 w-full md:w-auto" />
-              <div className="flex space-x-2">
-                <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 active:bg-blue-700 transition duration-150">Update</button>
-                <button className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 active:bg-green-700 transition duration-150" onClick={uploadImage}>Upload</button>
-              </div>
+            <div className='flex flex-col gap-2'>
+            {/* <div key={index} className=" border-b-4 pb-2  md:flex-row items-center justify-between mt-4 space-y-4 md:space-y-0"> */}
+              <img src={banner} alt={`Image ${index + 1}`} style={{height:'20rem', width:'25rem'}}/>
+              <img src={dltBtn} alt={`Image ${index + 1}`} onClick={()=>deleteImgHanlder(index)}
+              className='rounded' style={{height:'2rem', width:'5rem',marginLeft:'auto'}}
+              />
+             {/* <input type="file" onChange={(e) => setImageUpload(e.target.files[0])} className="border p-2 mb-4 md:mb-0 md:mr-4 w-full md:w-auto" /> */}
+              {/* <div className="flex space-x-2"> */}
+               {/* <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 active:bg-blue-700 transition duration-150">Delete</button> */}
+               {/*  <button className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 active:bg-green-700 transition duration-150" onClick={uploadImage}>Upload</button> */}
+             {/*  </div> */}
+             {/* </div> */}
             </div>
           ))}
+          </div>
         </div>
       </div>
     </>
