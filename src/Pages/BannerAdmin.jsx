@@ -10,7 +10,7 @@ const BannerAdmin = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigateTo = useNavigate();
   const [imageUpload, setImageUpload] = useState(null);
-
+  const [imageUrl, setImageUrl] = useState(''); // Add imageUrl state
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
@@ -18,7 +18,10 @@ const BannerAdmin = () => {
 
   const uploadImage = async (event) => {
     event.preventDefault();
-    if (imageUpload == null) return;
+    if (imageUpload == null) {
+      toast.error("No image selected. Please choose an image to upload.");
+      return;
+    }
     const imageRef = ref(storage, `images/banners/${imageUpload.name + v4()}`);
     try {
       await uploadBytes(imageRef, imageUpload);
@@ -26,6 +29,7 @@ const BannerAdmin = () => {
       setImageUrl(downloadURL);
       toast.success("Image Uploaded Successfully");
     } catch (error) {
+      console.error("Image upload error:", error);
       toast.error("Image upload failed. Please try again.");
     }
   };
@@ -68,7 +72,7 @@ const BannerAdmin = () => {
             <NavItem icon="fa-users" text="Users" link="/admin/users" />
           </div>
         </div>
-        
+
         <div className="w-full pt-3 p-4">
           <div className="text-center text-2xl font-extrabold mb-4">Images</div>
           {[...Array(5)].map((_, index) => (
@@ -76,8 +80,8 @@ const BannerAdmin = () => {
               <img src={`https://via.placeholder.com/100`} alt={`Image ${index + 1}`} className="w-24 h-24 object-cover mb-4 md:mb-0 md:mr-4" />
               <input type="file" onChange={(e) => setImageUpload(e.target.files[0])} className="border p-2 mb-4 md:mb-0 md:mr-4 w-full md:w-auto" />
               <div className="flex space-x-2">
-                <button className="bg-blue-500 text-white py-2 px-4 rounded">Update</button>
-                <button className="bg-green-500 text-white py-2 px-4 rounded" onClick={uploadImage} >Upload</button>
+                <button className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 active:bg-blue-700 transition duration-150">Update</button>
+                <button className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 active:bg-green-700 transition duration-150" onClick={uploadImage}>Upload</button>
               </div>
             </div>
           ))}
