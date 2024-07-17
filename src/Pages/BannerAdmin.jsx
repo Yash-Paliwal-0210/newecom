@@ -1,13 +1,33 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../Components/Navbar';
+import { getDownloadURL, ref, uploadBytes } from 'firebase/storage';
+import { toast } from 'react-toastify';
+import { v4 } from 'uuid';
+import { storage } from '../Firebase/Config';
 
 const BannerAdmin = () => {
   const [menuOpen, setMenuOpen] = useState(false);
   const navigateTo = useNavigate();
+  const [imageUpload, setImageUpload] = useState(null);
+
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  const uploadImage = async (event) => {
+    event.preventDefault();
+    if (imageUpload == null) return;
+    const imageRef = ref(storage, `images/banners/${imageUpload.name + v4()}`);
+    try {
+      await uploadBytes(imageRef, imageUpload);
+      const downloadURL = await getDownloadURL(imageRef);
+      setImageUrl(downloadURL);
+      toast.success("Image Uploaded Successfully");
+    } catch (error) {
+      toast.error("Image upload failed. Please try again.");
+    }
   };
 
   return (
@@ -54,10 +74,10 @@ const BannerAdmin = () => {
           {[...Array(5)].map((_, index) => (
             <div key={index} className="flex flex-col border-b-4 pb-2  md:flex-row items-center justify-between mt-4 space-y-4 md:space-y-0">
               <img src={`https://via.placeholder.com/100`} alt={`Image ${index + 1}`} className="w-24 h-24 object-cover mb-4 md:mb-0 md:mr-4" />
-              <input type="file" className="border p-2 mb-4 md:mb-0 md:mr-4 w-full md:w-auto" />
+              <input type="file" onChange={(e) => setImageUpload(e.target.files[0])} className="border p-2 mb-4 md:mb-0 md:mr-4 w-full md:w-auto" />
               <div className="flex space-x-2">
                 <button className="bg-blue-500 text-white py-2 px-4 rounded">Update</button>
-                <button className="bg-green-500 text-white py-2 px-4 rounded">Upload</button>
+                <button className="bg-green-500 text-white py-2 px-4 rounded" onClick={uploadImage} >Upload</button>
               </div>
             </div>
           ))}
