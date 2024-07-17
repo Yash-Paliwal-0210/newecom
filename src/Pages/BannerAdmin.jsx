@@ -50,11 +50,11 @@ const BannerAdmin = () => {
         </div>
         
         <div className="w-full pt-3 p-4">
-          <div className="text-center text-2xl font-extrabold">Images</div>
+          <div className="text-center text-2xl font-extrabold mb-4">Images</div>
           {[...Array(5)].map((_, index) => (
-            <div key={index} className="flex items-center justify-between mt-4">
-              <img src={`https://via.placeholder.com/100`} alt={`Image ${index + 1}`} className="w-24 h-24 object-cover mr-4" />
-              <input type="file" className="border p-2 mr-4" />
+            <div key={index} className="flex flex-col border-b-4 pb-2  md:flex-row items-center justify-between mt-4 space-y-4 md:space-y-0">
+              <img src={`https://via.placeholder.com/100`} alt={`Image ${index + 1}`} className="w-24 h-24 object-cover mb-4 md:mb-0 md:mr-4" />
+              <input type="file" className="border p-2 mb-4 md:mb-0 md:mr-4 w-full md:w-auto" />
               <div className="flex space-x-2">
                 <button className="bg-blue-500 text-white py-2 px-4 rounded">Update</button>
                 <button className="bg-green-500 text-white py-2 px-4 rounded">Upload</button>
