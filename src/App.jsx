@@ -84,7 +84,7 @@ function App() {
             <Route exact path='/payment' element={<Payment />} />
             <Route exact path='/ordersummary' element={<OrderSummary />} />
             <Route exact path='/updateProfileAdmin' element={<UpdateProfleAdmin />} />
-            <Route exact path='/order/me' element={<MyOrders />} />
+            <Route exact path='/order/:id' element={<MyOrders />} />
             <Route exact path='/order/mee' element={<OrderDetails/>}/>
             <Route exact path='/about' element={<About/>}/>
             <Route exact path='/contact' element={<Contact />}/>

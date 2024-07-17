@@ -79,10 +79,10 @@ const Navbar = () => {
               {!isLoggedIn && (
                 <>
                 
-                  <div onClick={() => navigateTo('/auth/Login')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Login</div>
-                  <div onClick={() => navigateTo('/auth/SignUp')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Sign Up</div>
-                  <div   onClick={() => navigateTo('/auth/Login')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Login</div>
-                  <div   onClick={() => navigateTo('/auth/SignUp')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Sign Up</div>
+                  <div onClick={() => navigateTo('/auth/Login')} className="cursor-pointer bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Login</div>
+                  <div onClick={() => navigateTo('/auth/SignUp')} className="cursor-pointer bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Sign Up</div>
+                  {/* <div   onClick={() => navigateTo('/auth/Login')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Login</div>
+                  <div   onClick={() => navigateTo('/auth/SignUp')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Sign Up</div> */}
                 </>
               )}
               {isLoggedIn && (
@@ -101,17 +101,17 @@ const Navbar = () => {
                       <div onClick={() => navigateTo('/profile')} className="cursor-default block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</div>
                       <div onClick={() => navigateTo('/order/me')} className="cursor-default block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</div>
                     {/* <a href="/liked" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Liked</a> */}
-                      <div   onClick={() => navigateTo('/profile')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</div>
-                      <div href="/order/me" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</div>
+                      {/* <div   onClick={() => navigateTo('/profile')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</div> */}
+                      {/* <div href="/order/me" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</div> */}
                     {/* <div href="/liked" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Liked</div> */}
                       {role === "admin" && (
                         <div onClick={() => navigateTo('/admin/dashboard')} className="cursor-default block px-4 py-2 text-gray-700 hover:bg-gray-100">Dashboard</div>
                       )}
                         <div  onClick={() => navigateTo('/cart')} className="cursor-default block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</div>
-                        <div   onClick={() => navigateTo('/cart')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</div>
+                        {/* <div   onClick={() => navigateTo('/cart')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</div> */}
 
                       <div onClick={handleLogout} className="cursor-default block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</div>
-                      <div   onClick={handleLogout} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</div>
+                      {/* <div   onClick={handleLogout} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</div> */}
                     </div>
                   )}
                 </div>
@@ -132,8 +132,8 @@ const Navbar = () => {
                   <div className="absolute right-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg py-2 z-10">
                     <div onClick={() => navigateTo('/profile')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</div>
                     <div onClick={ () => navigateTo('/order/mee')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</div>
-                    <div   onClick={() => navigateTo('/profile')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</div>
-                    <div onClick={() => navigateTo('/order/mee')}  className="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</div>
+                    {/* <div   onClick={() => navigateTo('/profile')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Profile</div>
+                    <div onClick={() => navigateTo('/order/mee')}  className="block px-4 py-2 text-gray-700 hover:bg-gray-100">My Orders</div> */}
 
                     {/* <div href="/liked" className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Liked</div>  */}
                     {role === "admin" && (
@@ -141,17 +141,17 @@ const Navbar = () => {
                     )}
                     <div onClick={() => navigateTo('/cart')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</div>
                     <div onClick={handleLogout} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</div>
-                    <div   onClick={() => navigateTo('/cart')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</div>
-                    <div   onClick={handleLogout} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</div>
+                    {/* <div   onClick={() => navigateTo('/cart')} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Cart</div>
+                    <div   onClick={handleLogout} className="block px-4 py-2 text-gray-700 hover:bg-gray-100">Logout</div> */}
                   </div>
                 )}
               </div>
             ) : (
               <div className="flex space-x-3">
-                <div onClick={ ()=> navigateTo('/auth/Login')} className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Login</div>
-                <div onClick={ ()=> navigateTo('/auth/SignUp')}  className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Sign Up</div>
-                <div href="/auth/Login" className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Login</div>
-                <div href="/auth/SignUp" className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Sign Up</div>
+                <div onClick={ ()=> navigateTo('/auth/Login')} className="cursor-pointer bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Login</div>
+                <div onClick={ ()=> navigateTo('/auth/SignUp')}  className="cursor-pointer bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Sign Up</div>
+                {/* <div href="/auth/Login" className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Login</div>
+                <div href="/auth/SignUp" className="bg-green-600 text-white px-2 rounded-lg py-2 font-semibold">Sign Up</div> */}
               </div>
             )}
           </div>
